@@ -1,19 +1,79 @@
 <!doctype html>
-
+<style>
+	body {
+		padding: 20px;
+		background-color:hsl(193, 73%, 62%);
+		
+	}
+	button{
+		background-color:rgb(215, 218, 24)
+	}
+</style>
 <head>
 	<meta charset="utf-8">
 	<script>
+		
+	let actions = {
+   "google": "https://www.google.com/search",
+   "duckDuckGo": "https://duckduckgo.com/",
+   "bing": "https://www.bing.com/search",
+   "ask": "https://www.ask.com/web"
+};	
+
 		// TODO: create a handler
+	function setSearchEngine(){
+		
+	//  const button = document.getElementById("btn")
+	// 	button.addEventListener("click", function(){
+			//let engine = document.querySelector('input[name=engine]:checked');
+			//document.querySelector("form").action = actions.searched.value;
+			let search = document.querySelector("input[name=q]");
+			// if (search.value === "" || engine.value === "") {
+            // alert("All fields are required!");
+			let selectedEngine = document.querySelector('input[name=engine]:checked');
+            let action = actions[selectedEngine.value];
+            //form.setAttribute('action', action);
+	//console.log(selectedEngine.value,search.value);
+	
+				
+			
+		
+					
+};	
+	
     window.addEventListener("load", function(){
-        // TODO: register the handler
-    });
+		
+	   let form = document.querySelector("form");
+	  
+	   form.addEventListener("submit", function(e){
+		setSearchEngine();
+	    let selectedEngine = document.querySelector('input[name=engine]:checked');
+            let action = actions[selectedEngine.value];
+            form.setAttribute('action', action);
+		
+		console.log('click');
+		e.preventDefault;
+		
+		
+		
+		
+	   });
+	   form.reset();
+	});
+    
 	</script>
 </head>
 
 <body>
 
-	<form id="searchForm">
-    <!-- TODO: add form elements -->
+	<form id="searchForm" action="" post="POST">
+		
+	<label><input type="text" name="q" required="required"/></label>
+	<label>Google<input type="radio" name="engine" value="google" required="qRequired"/></label>
+   	<label>DuckDuckGo<input type="radio" name="engine" value="duckDuckGo"/></label>
+   	<label>Bing<input type="radio" name="engine" value="bing"/></label>	
+   	<label>Ask<input type="radio" name="engine" value="ask"/></label>
+   	<button>Go!</button>
 	</form>
 
 </body>
